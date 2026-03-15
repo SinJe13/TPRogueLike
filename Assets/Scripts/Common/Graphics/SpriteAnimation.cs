@@ -20,6 +20,22 @@ public class SpriteAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Sprites.Count == 0) return;
+
+        _currentTimer += Time.deltaTime;
+
+        if (_currentTimer >= Timer)
+        {
+            _currentTimer = 0f;
+
+            _currentSpriteIndex++;
+
+            if (_currentSpriteIndex >= Sprites.Count)
+            {
+                _currentSpriteIndex = 0;
+            }
+
+            Renderer.sprite = Sprites[_currentSpriteIndex];
+        }
     }
 }

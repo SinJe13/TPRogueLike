@@ -16,10 +16,10 @@ public class Map : MonoBehaviour
             _grid[cell.x, cell.y] = new GameObject();
         }
 
-        foreach (var cell in Enemies)
-        {
-            Vector3 position = new Vector3(cell.x * CellSize, cell.y * CellSize);
+        //foreach (var cell in Enemies)
+        //{
+        //    Vector3 position = new Vector3(cell.x * CellSize, cell.y * CellSize);
 
-        }
+        //}
     }
 }
