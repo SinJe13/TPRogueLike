@@ -1,9 +1,8 @@
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerMove : MonoBehaviour
 {
-    Vector2Int _gridPosition = new Vector2Int(7, 9);
+    Vector2Int _gridPosition = new Vector2Int(0, 0);
     Vector2Int _coordPlayer;
 
     void Update()
@@ -29,11 +28,17 @@ public class PlayerMove : MonoBehaviour
             _coordPlayer = _gridPosition + new Vector2Int(0, 1);
         }
 
-        //if (Map.coord[_coordPlayer.x, _coordPlayer.y] != 0)
-        //{
+        // Vérification obstacle
+        if (_coordPlayer.x >= 0 && _coordPlayer.x < 20 &&
+            _coordPlayer.y >= 0 && _coordPlayer.y < 20 &&
+            !Map.grid[_coordPlayer.x, _coordPlayer.y])
+        {
             _gridPosition = _coordPlayer;
-            transform.position = new Vector3(_gridPosition.x * Map.CellSize, _gridPosition.y * Map.CellSize, 0);
-        //}
 
+            transform.position = new Vector3(
+                _gridPosition.x * Map.CellSize,
+                _gridPosition.y * Map.CellSize,
+                0);
+        }
     }
 }

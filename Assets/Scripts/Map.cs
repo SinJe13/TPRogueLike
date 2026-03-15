@@ -5,7 +5,7 @@ public class Map : MonoBehaviour
 {
     public const float CellSize = 0.08f;
 
-    bool[,] _grid = new bool[20, 20];
+    public static bool[,] grid = new bool[20, 20];
 
     public List<Vector2Int> Obstacles;
 
@@ -13,13 +13,7 @@ public class Map : MonoBehaviour
     {
         foreach (var cell in Obstacles)
         {
-            _grid[cell.x, cell.y] = new GameObject();
+            grid[cell.x, cell.y] = true; // true = obstacle
         }
-
-        //foreach (var cell in Enemies)
-        //{
-        //    Vector3 position = new Vector3(cell.x * CellSize, cell.y * CellSize);
-
-        //}
     }
 }
