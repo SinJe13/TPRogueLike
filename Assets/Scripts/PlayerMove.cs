@@ -34,8 +34,8 @@ public class PlayerMove : MonoBehaviour
 
         
         // Vérification obstacle
-        if (coordPlayer.x >= 0 && coordPlayer.x < 20 &&
-            coordPlayer.y >= 0 && coordPlayer.y < 20 &&
+        if (coordPlayer.x >= 0 && coordPlayer.x < 27 &&
+            coordPlayer.y >= 0 && coordPlayer.y < 15 &&
             !Map.grid[coordPlayer.x, coordPlayer.y])
         {
             _gridPosition = coordPlayer;
