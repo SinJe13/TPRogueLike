@@ -5916,13 +5916,15 @@ MonoBehaviour:
   _prefabEnemy: {fileID: 6579434175232751682, guid: f7df138b5494dfd46a2c760edb7b4292, type: 3}
   Ennemies:
   - {x: 3, y: 3}
-  _prefabPotion: {fileID: 0}
-  _prefabGold: {fileID: 0}
+  _prefabPotion: {fileID: 2807026882152987932, guid: 124d03f723da0d54491a00105d36a57e, type: 3}
+  _prefabGold: {fileID: 194296160191104503, guid: 0ff400c724e455641b4b10a622d16c9a, type: 3}
   _prefabPot: {fileID: 2682400789936643037, guid: a0a6e4f557b25fc41b0be09f8791af18, type: 3}
   Pots:
   - {x: 14, y: 5}
-  _prefabVortex: {fileID: 0}
-  Vortex: []
+  _prefabVortex: {fileID: 1826346450792392024, guid: 647c78fdd7e92dd408629b4505a56ab0, type: 3}
+  Vortex:
+  - {x: 9, y: 9}
+  - {x: 24, y: 12}
   _prefabPNJ: {fileID: 4831108376113485064, guid: 26548fb2b6c3f5b43a93c3adef167205, type: 3}
   PNJ:
   - {x: 14, y: 6}
