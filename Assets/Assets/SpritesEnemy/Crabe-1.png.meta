@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d7d024598fc07df4580d2a3de660bd24
+guid: a1e60b272352a3d4a9c4f310d7e1ec0a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6330025376723837327
-    second: Sr Mec Banane-1.png_0
+      213: -2080924303096905713
+    second: Crabe-1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,11 +96,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sr Mec Banane-1.png_0
+      name: Crabe-1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f8125deca84c8d750800000000000000
-      internalID: 6330025376723837327
+      spriteID: f008e6d1f521f13e0800000000000000
+      internalID: -2080924303096905713
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sr Mec Banane-1.png_0: 6330025376723837327
+      Crabe-1_0: -2080924303096905713
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
