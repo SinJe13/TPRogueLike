@@ -5266,16 +5266,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 14, y: 5, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 12
-      m_TileSpriteIndex: 13
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 19, y: 5, z: 0}
     second:
       serializedVersion: 2
@@ -5602,8 +5592,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: af447ed9d74639a43a5b403460254ec8, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 8685cb13f76f7944db0cc3a72db5b3be, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: e05fff5aeab772f4d8ca004b733220de, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 1
@@ -5639,8 +5629,8 @@ Tilemap:
     m_Data: {fileID: -1580947266, guid: 7dc4e3e33cbdd634ea18d89bfaa12928, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 1732859291, guid: 7dc4e3e33cbdd634ea18d89bfaa12928, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 41267138, guid: 7dc4e3e33cbdd634ea18d89bfaa12928, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -263804396, guid: 7dc4e3e33cbdd634ea18d89bfaa12928, type: 3}
   - m_RefCount: 2
@@ -5648,7 +5638,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -1957360147, guid: 7dc4e3e33cbdd634ea18d89bfaa12928, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 44
+  - m_RefCount: 43
     m_Data:
       e00: 1
       e01: 0
@@ -5703,7 +5693,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 45
+  - m_RefCount: 44
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -5923,12 +5913,14 @@ MonoBehaviour:
   - {x: 24, y: 14}
   - {x: 26, y: 1}
   - {x: 26, y: 6}
-  _prefabEnemy: {fileID: 0}
-  Ennemies: []
+  _prefabEnemy: {fileID: 6579434175232751682, guid: f7df138b5494dfd46a2c760edb7b4292, type: 3}
+  Ennemies:
+  - {x: 3, y: 3}
   _prefabPotion: {fileID: 0}
   _prefabGold: {fileID: 0}
-  _prefabPot: {fileID: 0}
-  Pots: []
+  _prefabPot: {fileID: 2682400789936643037, guid: a0a6e4f557b25fc41b0be09f8791af18, type: 3}
+  Pots:
+  - {x: 14, y: 5}
   _prefabVortex: {fileID: 0}
   Vortex: []
   _prefabPNJ: {fileID: 4831108376113485064, guid: 26548fb2b6c3f5b43a93c3adef167205, type: 3}

@@ -15,7 +15,7 @@ public class Character : MonoBehaviour
     {
         int actualDamage = Mathf.Max(0, damage - Armor);
         HP -= actualDamage;
-        Debug.Log($"{gameObject.name} prend {actualDamage} degats. PV restants : {HP}");
+        Debug.Log($"{gameObject.name} prend {actualDamage} dégâts. PV restants : {HP}");
 
         if (HP <= 0) Die();
     }

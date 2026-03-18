@@ -1,6 +1,7 @@
 using Assets.Scripts;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Map : MonoBehaviour
 {
@@ -41,20 +42,29 @@ public class Map : MonoBehaviour
 
         foreach (var cell in Ennemies)
         {
-            Vector3 worldPosition = new Vector3(cell.x * CellSize, cell.y * CellSize, 0);
+            Vector3Int _gridPosition = new Vector3Int(cell.x, cell.y);
 
-            var init = Instantiate(_prefabEnemy, worldPosition, Quaternion.identity);
+            Vector3 WorldPosition = GridManager.Instance.CellToWorld(_gridPosition);
+            WorldPosition.x += CellSize/2;
+            WorldPosition.y += CellSize/2;
+
+            var init = Instantiate(_prefabEnemy, WorldPosition, Quaternion.identity);
             var enemy = init.GetComponent<Enemy>();
             enemy.Initialize(cell.x, cell.y, 20, 5, 2);
-            grid[cell.x, cell.y] = init;
+            grid[cell.x, cell.y] = true;
         }
 
-        foreach (var position in Pots)
+        foreach (var cell in Pots)
         {
-            Vector3 worldPosition = new Vector3(position.x * CellSize, position.y * CellSize, 0);
-            var go = Instantiate(_prefabPot, worldPosition, Quaternion.identity);
-            go.tag = "Vase";
-            grid[position.x, position.y] = go;
+            Vector3Int _gridPosition = new Vector3Int(cell.x, cell.y);
+
+            Vector3 WorldPosition = GridManager.Instance.CellToWorld(_gridPosition);
+            WorldPosition.x += CellSize/2;
+            WorldPosition.y += CellSize/2;
+
+            var init = Instantiate(_prefabPot, WorldPosition, Quaternion.identity);
+            init.tag = "Vase";
+            grid[cell.x, cell.y] = true;
         }
 
         if (Vortex.Count == 2)
@@ -64,23 +74,30 @@ public class Map : MonoBehaviour
                 int x = Vortex[i].x;
                 int y = Vortex[i].y;
 
-                Vector3 worldPosition = new Vector3(x * CellSize, y * CellSize, 0);
-                var go = Instantiate(_prefabVortex, worldPosition, Quaternion.identity);
-                go.tag = "Vortex";
-                MainGame.Instance.SetObject(x, y, go);
+                Vector3Int _gridPosition = new Vector3Int(x, y);
+
+                Vector3 WorldPosition = GridManager.Instance.CellToWorld(_gridPosition);
+                WorldPosition.x += CellSize/2;
+                WorldPosition.y += CellSize/2;
+
+                var init = Instantiate(_prefabVortex, WorldPosition, Quaternion.identity);
+                init.tag = "Vortex";
+                MainGame.Instance.SetObject(x, y);
             }
         }
 
-        foreach (var position in PNJ)
+        foreach (var cell in PNJ)
         {
-            Vector3Int _gridPosition = new Vector3Int(position.x, position.y);
+            Vector3Int _gridPosition = new Vector3Int(cell.x, cell.y);
 
             Vector3 WorldPosition = GridManager.Instance.CellToWorld(_gridPosition);
+            WorldPosition.x += CellSize/2;
+            WorldPosition.y += CellSize/2;
 
             var init = Instantiate(_prefabPNJ, WorldPosition, Quaternion.identity);
             init.tag = "PNJ";
 
-            grid[position.x, position.y] = true;
+            grid[cell.x, cell.y] = true;
         }
     }
 }
