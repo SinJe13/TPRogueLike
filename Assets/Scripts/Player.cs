@@ -7,14 +7,14 @@ public class Player : Character
 {
     Vector2Int _gridPosition = new Vector2Int(0, 0);
 
-    //[SerializeField] private GameObject PNJInteractionUI;
-    //[SerializeField] private GameObject NoMoneyUI;
+    [SerializeField] private GameObject PNJInteractionUI;
+    [SerializeField] private GameObject NoMoneyUI;
     private bool isNearPNJ = false;
 
     private int _level = 1;
     private int _xp = 0;
     private int _xpToNextLevel = 10;
-    private int _gold = 0;
+    private int _gold = 5;
 
     private void Start()
     {
@@ -50,7 +50,8 @@ public class Player : Character
             Move(0, 1, coordPlayer);
         }
 
-        
+        if (isNearPNJ && Input.GetKeyDown(KeyCode.Return)) TryBuyHeal();
+
         //// Vérification obstacle
         //if (coordPlayer.x >= 0 && coordPlayer.x < 27 &&
         //    coordPlayer.y >= 0 && coordPlayer.y < 15 &&
@@ -84,6 +85,17 @@ public class Player : Character
             return;
         }
 
+        if (obj != null && obj.CompareTag("PNJ"))
+        {
+            isNearPNJ = true;
+            PNJInteractionUI.SetActive(true);
+        }
+        else
+        {
+            isNearPNJ = false;
+            PNJInteractionUI.SetActive(false);
+            NoMoneyUI.SetActive(false);
+        }
 
     }
 
@@ -102,6 +114,52 @@ public class Player : Character
             Debug.Log($"{enemy.gameObject.name} contre-attaque et inflige {damageToPlayer} degats");
             this.Hit(damageToPlayer);
         }
-        //else GainExperience(5);
+        else GainExperience(5);
+    }
+
+    void GainExperience(int xpGained)
+    {
+        if (_level >= 5) return;
+
+        _xp += xpGained;
+        Debug.Log($"XP gagner : {xpGained}, XP total : {_xp}/{_xpToNextLevel}");
+
+        if (_xp >= _xpToNextLevel) LevelUp();
+    }
+
+    void LevelUp()
+    {
+        if (_level >= 5) return;
+
+        _level++;
+        _xp = 0;
+        _xpToNextLevel += 10;
+
+        HP += 10;
+        Strenght += 2;
+
+        Debug.Log($"Niveau {_level} atteint ! PV max : {HP}, Attaque : {Strenght}");
+    }
+
+    void Heal(int cost, int healAmount)
+    {
+        if (_gold >= cost)
+        {
+            _gold -= cost;
+            HP = Mathf.Min(HP + healAmount, 100);
+            Debug.Log($"Soigner de {healAmount} PV. PV actuels : {HP}, Or actuels : {_gold}");
+        }
+        else TryBuyHeal();
+    }
+
+    private void TryBuyHeal()
+    {
+        if (_gold >= 5)
+        {
+            Heal(5, 20);
+            PNJInteractionUI.SetActive(false);
+            NoMoneyUI.SetActive(false);
+        }
+        else NoMoneyUI.SetActive(true);
     }
 }
