@@ -7,7 +7,7 @@ public class Map : MonoBehaviour
 {
     public const float CellSize = 0.08f;
 
-    public static bool[,] grid = new bool[27, 15];
+    public static GameObject[,] grid = new GameObject[27, 15];
 
 
     [Header("Walls")]
@@ -37,7 +37,7 @@ public class Map : MonoBehaviour
     {
         foreach (var cell in Obstacles)
         {
-            grid[cell.x, cell.y] = true; // true = obstacle
+            grid[cell.x, cell.y] = new GameObject(); // true = obstacle
         }
 
         foreach (var cell in Ennemies)

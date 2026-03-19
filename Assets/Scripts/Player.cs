@@ -65,7 +65,7 @@ public class Player : Character
     private void Move(int dirX, int dirY, Vector2Int coordPlayer)
     {
         coordPlayer = _gridPosition + new Vector2Int(dirX, dirY);
-
+        
         if (coordPlayer.x >= 0 && coordPlayer.x < 27 &&
             coordPlayer.y >= 0 && coordPlayer.y < 15 &&
             !Map.grid[coordPlayer.x, coordPlayer.y])
