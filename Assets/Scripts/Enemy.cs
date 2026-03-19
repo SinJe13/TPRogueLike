@@ -26,7 +26,7 @@ namespace Assets.Scripts
             int x = (int)(transform.position.x / Map.CellSize);
             int y = (int)(transform.position.y / Map.CellSize);
 
-            MainGame.Instance.SetObject(x, y);
+            MainGame.Instance.SetObject(x, y, null);
 
             GenerateLoot(x, y);
 
@@ -48,7 +48,7 @@ namespace Assets.Scripts
                 //loot = Instantiate(MainGame.Instance.PrefabGold, new Vector3(x * MainGame.Instance.CellSize, y * MainGame.Instance.CellSize, 0), Quaternion.identity);
                 loot.tag = "Gold";
             }
-            if (loot != null) MainGame.Instance.SetObject(x, y);
+            if (loot != null) MainGame.Instance.SetObject(x, y, loot);
         }
     }
 }

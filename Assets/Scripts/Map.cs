@@ -51,7 +51,7 @@ public class Map : MonoBehaviour
             var init = Instantiate(_prefabEnemy, WorldPosition, Quaternion.identity);
             var enemy = init.GetComponent<Enemy>();
             enemy.Initialize(cell.x, cell.y, 20, 5, 2);
-            grid[cell.x, cell.y] = true;
+            grid[cell.x, cell.y] = init;
         }
 
         foreach (var cell in Pots)
@@ -64,7 +64,7 @@ public class Map : MonoBehaviour
 
             var init = Instantiate(_prefabPot, WorldPosition, Quaternion.identity);
             init.tag = "Vase";
-            grid[cell.x, cell.y] = true;
+            grid[cell.x, cell.y] = init;
         }
 
         if (Vortex.Count == 2)
@@ -82,7 +82,7 @@ public class Map : MonoBehaviour
 
                 var init = Instantiate(_prefabVortex, WorldPosition, Quaternion.identity);
                 init.tag = "Vortex";
-                MainGame.Instance.SetObject(x, y);
+                MainGame.Instance.SetObject(x, y, init);
             }
         }
 
@@ -97,7 +97,7 @@ public class Map : MonoBehaviour
             var init = Instantiate(_prefabPNJ, WorldPosition, Quaternion.identity);
             init.tag = "PNJ";
 
-            grid[cell.x, cell.y] = true;
+            grid[cell.x, cell.y] = init;
         }
     }
 }
