@@ -23,7 +23,7 @@ namespace Assets.Scripts
         {
             Debug.Log($"{gameObject.name} est mort");
 
-            Vector2Int gridPosition = (Vector2Int)GridManager.Instance.WorldToCell(transform.position);;
+            Vector2Int gridPosition = (Vector2Int)GridManager.Instance.WorldToCell(transform.position);
 
             MainGame.Instance.SetObject(gridPosition.x, gridPosition.y, null);
 
@@ -39,7 +39,7 @@ namespace Assets.Scripts
 
             if (randomValue < 0.3f)
             {
-                //loot = Instantiate(MainGame.Instance.PrefabPotion, new Vector3(x * MainGame.Instance.CellSize, y * MainGame.Instance.CellSize, 0), Quaternion.identity);
+                //loot = Instantiate(Map.Instance.PrefabPotion, new Vector3(x * MainGame.Instance.CellSize, y * MainGame.Instance.CellSize, 0), Quaternion.identity);
                 //loot.tag = "Potion";
             }
             else if (randomValue < 0.9f)

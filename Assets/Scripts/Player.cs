@@ -1,7 +1,9 @@
+using Assets.Scripts;
 using System;
 using System.Collections.Generic;
-using Assets.Scripts;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : Character
 {
@@ -115,17 +117,37 @@ public class Player : Character
 
         if (obj != null && obj.CompareTag("Vase"))
         {
-            int vaseNewX = coordPlayer.x + dirX;
-            int vaseNewY = coordPlayer.y + dirY;
+            Vector3Int currentPot = new Vector3Int(coordPlayer.x, coordPlayer.y);
+            currentPot.x += dirX;
+            currentPot.x += dirY;
 
-            if (vaseNewX >= 0 && vaseNewY >= 0 && vaseNewX < 100 && vaseNewY < 100 && MainGame.Instance.GetObject(vaseNewX, vaseNewY) == null)
+            Debug.Log(currentPot.ToString());
+            Debug.Log(coordPlayer.ToString());
+
+            if (currentPot.x >= 0 && currentPot.y >= 0 && currentPot.x < 100 && currentPot.y < 100 && MainGame.Instance.GetObject(currentPot.x, currentPot.y) == null)
             {
                 MainGame.Instance.SetObject(coordPlayer.x, coordPlayer.y, null);
-                obj.transform.position = new Vector3(vaseNewX * Map.grid.GetLength(0), vaseNewY * Map.grid.GetLength(1), 0);
-                MainGame.Instance.SetObject(vaseNewX, vaseNewY, obj);
+                obj.transform.position = GridManager.Instance.CellToWorld(currentPot);
+                MainGame.Instance.SetObject(currentPot.x, currentPot.y, obj);
             }
             else Debug.Log("Impossible de pousser");
             return;
+
+            //int vaseNewX = coordPlayer.x + dirX;
+            //int vaseNewY = coordPlayer.y + dirY;
+            //Vector2Int VaseGridPosition = new Vector2Int(vaseNewX, vaseNewY);
+            //Vector3Int CellPosition = GridManager.Instance.WorldToCell((Vector3Int)VaseGridPosition);
+            //CellPosition.x += (int)(Map.CellSize / 2);
+            //CellPosition.y += (int)(Map.CellSize / 2);
+
+            //if (vaseNewX >= 0 && vaseNewY >= 0 && vaseNewX < 100 && vaseNewY < 100 && MainGame.Instance.GetObject(vaseNewX, vaseNewY) == null)
+            //{
+            //    MainGame.Instance.SetObject(coordPlayer.x, coordPlayer.y, null);
+            //    obj.transform.position = GridManager.Instance.CellToWorld(CellPosition);
+            //    MainGame.Instance.SetObject(CellPosition.x, CellPosition.y, obj);
+            //}
+            //else Debug.Log("Impossible de pousser");
+            //return;
         }
     }
 

@@ -5,10 +5,11 @@ using UnityEngine.UIElements;
 
 public class Map : MonoBehaviour
 {
+    public static Map Instance;
+
     public const float CellSize = 0.08f;
 
     public static GameObject[,] grid = new GameObject[27, 15];
-
 
     [Header("Walls")]
     public List<Vector2Int> Obstacles;
@@ -23,7 +24,7 @@ public class Map : MonoBehaviour
 
     [Header("Pots")]
     [SerializeField] private GameObject _prefabPot;
-    [SerializeField] private List<Vector2Int> Pots = new List<Vector2Int>();
+    public List<Vector2Int> Pots = new List<Vector2Int>();
 
     [Header("Vortex")]
     [SerializeField] private GameObject _prefabVortex;
@@ -32,6 +33,12 @@ public class Map : MonoBehaviour
     [Header("PNJ")]
     [SerializeField] private GameObject _prefabPNJ;
     [SerializeField] private List<Vector2Int> PNJ = new List<Vector2Int>();
+
+    public GameObject PrefabPnj => _prefabPNJ;
+    public GameObject PrefabVortex => _prefabVortex;
+    public GameObject PrefabPot => _prefabPot;
+    public GameObject PrefabPotion => _prefabPotion;
+    public GameObject PrefabGold => _prefabGold;
 
     private void Awake()
     {
@@ -45,8 +52,8 @@ public class Map : MonoBehaviour
             Vector3Int _gridPosition = new Vector3Int(cell.x, cell.y);
 
             Vector3 WorldPosition = GridManager.Instance.CellToWorld(_gridPosition);
-            WorldPosition.x += CellSize/2;
-            WorldPosition.y += CellSize/2;
+            //WorldPosition.x += CellSize/2;
+            //WorldPosition.y += CellSize/2;
 
             var init = Instantiate(_prefabEnemy, WorldPosition, Quaternion.identity);
             var enemy = init.GetComponent<Enemy>();
@@ -59,8 +66,8 @@ public class Map : MonoBehaviour
             Vector3Int _gridPosition = new Vector3Int(cell.x, cell.y);
 
             Vector3 WorldPosition = GridManager.Instance.CellToWorld(_gridPosition);
-            WorldPosition.x += CellSize/2;
-            WorldPosition.y += CellSize/2;
+            //WorldPosition.x += CellSize;
+            //WorldPosition.y += CellSize;
 
             var init = Instantiate(_prefabPot, WorldPosition, Quaternion.identity);
             init.tag = "Vase";
@@ -77,8 +84,8 @@ public class Map : MonoBehaviour
                 Vector3Int _gridPosition = new Vector3Int(x, y);
 
                 Vector3 WorldPosition = GridManager.Instance.CellToWorld(_gridPosition);
-                WorldPosition.x += CellSize/2;
-                WorldPosition.y += CellSize/2;
+                //WorldPosition.x += CellSize/2;
+                //WorldPosition.y += CellSize/2;
 
                 var init = Instantiate(_prefabVortex, WorldPosition, Quaternion.identity);
                 init.tag = "Vortex";
@@ -91,8 +98,8 @@ public class Map : MonoBehaviour
             Vector3Int _gridPosition = new Vector3Int(cell.x, cell.y);
 
             Vector3 WorldPosition = GridManager.Instance.CellToWorld(_gridPosition);
-            WorldPosition.x += CellSize/2;
-            WorldPosition.y += CellSize/2;
+            //WorldPosition.x += CellSize/2;
+            //WorldPosition.y += CellSize/2;
 
             var init = Instantiate(_prefabPNJ, WorldPosition, Quaternion.identity);
             init.tag = "PNJ";
