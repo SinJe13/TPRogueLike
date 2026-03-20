@@ -42,6 +42,8 @@ public class Map : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+
         foreach (var cell in Obstacles)
         {
             grid[cell.x, cell.y] = new GameObject(); // true = obstacle

@@ -149,6 +149,12 @@ public class Player : Character
             //else Debug.Log("Impossible de pousser");
             //return;
         }
+
+        if (obj != null && obj.CompareTag("Vortex"))
+        {
+            TeleportToOtherVortex(coordPlayer.x, coordPlayer.y);
+            return;
+        }
     }
 
     private void Fight(Enemy enemy)
@@ -219,5 +225,18 @@ public class Player : Character
             NoMoneyUI.SetActive(false);
         }
         else NoMoneyUI.SetActive(true);
+    }
+
+    void TeleportToOtherVortex(int x, int y)
+    {
+        List<Vector2Int> vortexList = Map.Instance.Vortex;
+        Vector2Int currentVortex = new Vector2Int(x, y);
+        Vector2Int destinationVortex = (vortexList[0] == currentVortex) ? vortexList[1] : vortexList[0];
+
+        Debug.Log($"teleportation de ({x}, {y}) à ({destinationVortex.x}, {destinationVortex.y})");
+        Vector2Int TP = new Vector2Int(destinationVortex.x, destinationVortex.y);
+
+        _gridPosition = TP;
+        transform.position = GridManager.Instance.CellToWorld((Vector3Int)TP);
     }
 }

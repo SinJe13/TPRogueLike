@@ -44,13 +44,16 @@ namespace Assets.Scripts
             if (randomValue < 0.3f)
             {
                 Debug.Log("POTION !!!");
+                Debug.Log($"{WorldPosition}");
                 loot = Instantiate(Map.Instance.PrefabPotion, WorldPosition, Quaternion.identity);
                 loot.tag = "Potion";
             }
             else if (randomValue < 0.6f)
             {
                 Debug.Log("OR !!!");
+                Debug.Log($"{WorldPosition}");
                 loot = Instantiate(Map.Instance.PrefabGold, WorldPosition, Quaternion.identity);
+                Debug.Log(loot.ToString());
                 loot.tag = "Gold";
             }
             if (loot != null) MainGame.Instance.SetObject(x, y, loot);
