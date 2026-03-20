@@ -27,7 +27,7 @@ namespace Assets.Scripts
 
             MainGame.Instance.SetObject(gridPosition.x, gridPosition.y, null);
 
-            //GenerateLoot(gridPosition.x, gridPosition.y);
+            GenerateLoot(gridPosition.x, gridPosition.y);
 
             Destroy(gameObject);
         }
@@ -37,15 +37,21 @@ namespace Assets.Scripts
             float randomValue = Random.value;
             GameObject loot = null;
 
+            Vector3Int _gridPosition = new Vector3Int(x, y);
+
+            Vector3 WorldPosition = GridManager.Instance.CellToWorld(_gridPosition);
+
             if (randomValue < 0.3f)
             {
-                //loot = Instantiate(Map.Instance.PrefabPotion, new Vector3(x * MainGame.Instance.CellSize, y * MainGame.Instance.CellSize, 0), Quaternion.identity);
-                //loot.tag = "Potion";
+                Debug.Log("POTION !!!");
+                loot = Instantiate(Map.Instance.PrefabPotion, WorldPosition, Quaternion.identity);
+                loot.tag = "Potion";
             }
-            else if (randomValue < 0.9f)
+            else if (randomValue < 0.6f)
             {
-                //loot = Instantiate(MainGame.Instance.PrefabGold, new Vector3(x * MainGame.Instance.CellSize, y * Map.Instance.CellSize, 0), Quaternion.identity);
-                //loot.tag = "Gold";
+                Debug.Log("OR !!!");
+                loot = Instantiate(Map.Instance.PrefabGold, WorldPosition, Quaternion.identity);
+                loot.tag = "Gold";
             }
             if (loot != null) MainGame.Instance.SetObject(x, y, loot);
         }
