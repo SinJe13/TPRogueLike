@@ -7,6 +7,8 @@ TagManager:
   - PNJ
   - Vase
   - Vortex
+  - Potion
+  - Gold
   layers:
   - Default
   - TransparentFX

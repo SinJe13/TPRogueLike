@@ -6494,6 +6494,11 @@ MonoBehaviour:
   _prefabEnemy: {fileID: 6579434175232751682, guid: f7df138b5494dfd46a2c760edb7b4292, type: 3}
   Ennemies:
   - {x: 3, y: 3}
+  - {x: 4, y: 11}
+  - {x: 15, y: 2}
+  - {x: 12, y: 10}
+  - {x: 22, y: 5}
+  - {x: 23, y: 8}
   _prefabPotion: {fileID: 2807026882152987932, guid: 124d03f723da0d54491a00105d36a57e, type: 3}
   _prefabGold: {fileID: 194296160191104503, guid: 0ff400c724e455641b4b10a622d16c9a, type: 3}
   _prefabPot: {fileID: 2682400789936643037, guid: a0a6e4f557b25fc41b0be09f8791af18, type: 3}
