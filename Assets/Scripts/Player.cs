@@ -97,21 +97,51 @@ public class Player : Character
             NoMoneyUI.SetActive(false);
         }
 
+        if (obj != null && obj.CompareTag("Potion"))
+        {
+            HP = Mathf.Min(HP + 20, 100);
+            Destroy(obj);
+            MainGame.Instance.SetObject(coordPlayer.x, coordPlayer.y, null);
+            return;
+        }
+
+        if (obj != null && obj.CompareTag("Gold"))
+        {
+            AddGold(10);
+            Destroy(obj);
+            MainGame.Instance.SetObject(coordPlayer.x, coordPlayer.y, null);
+            return;
+        }
+
+        if (obj != null && obj.CompareTag("Vase"))
+        {
+            int vaseNewX = coordPlayer.x + dirX;
+            int vaseNewY = coordPlayer.y + dirY;
+
+            if (vaseNewX >= 0 && vaseNewY >= 0 && vaseNewX < 100 && vaseNewY < 100 && MainGame.Instance.GetObject(vaseNewX, vaseNewY) == null)
+            {
+                MainGame.Instance.SetObject(coordPlayer.x, coordPlayer.y, null);
+                obj.transform.position = new Vector3(vaseNewX * Map.grid.GetLength(0), vaseNewY * Map.grid.GetLength(1), 0);
+                MainGame.Instance.SetObject(vaseNewX, vaseNewY, obj);
+            }
+            else Debug.Log("Impossible de pousser");
+            return;
+        }
     }
 
     private void Fight(Enemy enemy)
     {
-        Debug.Log($"1 {Strenght} 2 {Armor} 3 {enemy.GetStrenghtPoints()} 4 {enemy.GetArmorPoints()}");
+        //Debug.Log($"1 {Strenght} 2 {Armor} 3 {enemy.GetStrenghtPoints()} 4 {enemy.GetArmorPoints()}");
 
         int damageToEnemy = Mathf.Max(0, Strenght - enemy.GetArmorPoints());
         int damageToPlayer = Mathf.Max(0, enemy.GetStrenghtPoints() - Armor);
 
-        Debug.Log($"Combat: {gameObject.name} inflige {damageToEnemy} degats a {enemy.gameObject.name}");
+        //Debug.Log($"Combat: {gameObject.name} inflige {damageToEnemy} degats a {enemy.gameObject.name}");
         enemy.Hit(damageToEnemy);
 
         if (enemy.GetHP() > 0)
         {
-            Debug.Log($"{enemy.gameObject.name} contre-attaque et inflige {damageToPlayer} degats");
+            //Debug.Log($"{enemy.gameObject.name} contre-attaque et inflige {damageToPlayer} degats");
             this.Hit(damageToPlayer);
         }
         else GainExperience(5);
@@ -138,7 +168,13 @@ public class Player : Character
         HP += 10;
         Strenght += 2;
 
-        Debug.Log($"Niveau {_level} atteint ! PV max : {HP}, Attaque : {Strenght}");
+        Debug.Log($"Niveau {_level} atteint ! PV max : {HP} - Attaque : {Strenght}");
+    }
+
+    private void AddGold(int amount)
+    {
+        _gold += amount;
+        Debug.Log($"Or actuel : {_gold}");
     }
 
     void Heal(int cost, int healAmount)
@@ -147,7 +183,7 @@ public class Player : Character
         {
             _gold -= cost;
             HP = Mathf.Min(HP + healAmount, 100);
-            Debug.Log($"Soigner de {healAmount} PV. PV actuels : {HP}, Or actuels : {_gold}");
+            Debug.Log($"Soigner de {healAmount} PV. PV actuels : {HP} - Or actuel : {_gold}");
         }
         else TryBuyHeal();
     }
