@@ -119,7 +119,7 @@ public class Player : Character
         {
             Vector3Int currentPot = new Vector3Int(coordPlayer.x, coordPlayer.y);
             currentPot.x += dirX;
-            currentPot.x += dirY;
+            currentPot.y += dirY;
 
             Debug.Log(currentPot.ToString());
             Debug.Log(coordPlayer.ToString());
